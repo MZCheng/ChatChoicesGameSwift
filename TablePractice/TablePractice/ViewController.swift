@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.separatorStyle = .none
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "taskCell")
+        
         for i in 0...5 {
             intArr.append(i)
         }
@@ -50,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell")!
         
         cell.textLabel?.text = "\(intArr[indexPath.row]) \nmiaomiaomiao"
         
